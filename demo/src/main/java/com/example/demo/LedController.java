@@ -1,4 +1,4 @@
-package com.klu.controller;
+package com.example.demo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +12,14 @@ import com.pi4j.io.gpio.RaspiPin;
 @RestController
 public class LedController {
 	private static GpioPinDigitalOutput pin;
+	
 	@RequestMapping("/")
 	public String greeting() {
 		return "Hello World!!!";
+	}
+	@RequestMapping("/home")
+	public String home() {
+		return "Hello Home!!!";
 	}
 	
 	@RequestMapping("/toggle")
@@ -33,7 +38,7 @@ public class LedController {
 		return checkState();
 	}
 	
-	@RequestMapping("/on")
+	@RequestMapping("/off")
 	public String off() {
 		getPin().low();
 		return checkState();
